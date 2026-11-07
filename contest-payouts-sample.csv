@@ -1,0 +1,21 @@
+contest_id,contest,entry_fee,rank_from,rank_to,prize
+main,UFC $5 Fight Night Special,5,1,1,150
+main,UFC $5 Fight Night Special,5,2,2,80
+main,UFC $5 Fight Night Special,5,3,3,50
+main,UFC $5 Fight Night Special,5,4,5,30
+main,UFC $5 Fight Night Special,5,6,10,15
+main,UFC $5 Fight Night Special,5,11,20,10
+main,UFC $5 Fight Night Special,5,21,30,7
+se,UFC $20 Single Entry,20,1,1,600
+se,UFC $20 Single Entry,20,2,2,350
+se,UFC $20 Single Entry,20,3,3,220
+se,UFC $20 Single Entry,20,4,5,140
+se,UFC $20 Single Entry,20,6,10,80
+se,UFC $20 Single Entry,20,11,20,50
+3max,UFC $3 3-Max,3,1,1,90
+3max,UFC $3 3-Max,3,2,2,50
+3max,UFC $3 3-Max,3,3,3,30
+3max,UFC $3 3-Max,3,4,5,20
+3max,UFC $3 3-Max,3,6,10,10
+3max,UFC $3 3-Max,3,11,20,6
+3max,UFC $3 3-Max,3,21,30,4

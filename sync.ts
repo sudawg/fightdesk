@@ -1,49 +1,50 @@
-// Cross-device sync: one gzip'd JSON snapshot in Vercel Blob, guarded by a sync code.
-// Env: SYNC_CODE (you choose it), BLOB_READ_WRITE_TOKEN (added when you create a Blob store).
-import { get, put } from "@vercel/blob";
-import { createHash, timingSafeEqual } from "node:crypto";
+import type { AppData } from "./types";
 
-const sha = (s: string) => createHash("sha256").update(s).digest();
-const reply = (body: BodyInit | null, status = 200, type = "application/json") =>
-  new Response(body, { status, headers: { "content-type": type, "cache-control": "no-store" } });
+const CODE_KEY = "fightdesk:sync-code";
+export const getCode = () => { try { return localStorage.getItem(CODE_KEY) ?? ""; } catch { return ""; } };
+export const setCode = (c: string) => { try { if (c) localStorage.setItem(CODE_KEY, c); else localStorage.removeItem(CODE_KEY); } catch { /* ignore */ } };
 
-function authorised(req: Request) {
-  const code = process.env.SYNC_CODE;
-  const got = req.headers.get("x-sync-code");
-  return !!code && !!got && timingSafeEqual(sha(code), sha(got));
+export type SyncState = { status: "off" | "idle" | "syncing" | "error" | "unavailable"; at?: number; msg?: string };
+export interface Snapshot { savedAt: number; data: AppData }
+
+async function gz(text: string): Promise<Blob> {
+  return new Response(new Blob([text]).stream().pipeThrough(new CompressionStream("gzip"))).blob();
 }
-// The file name is derived from the code, so the blob URL can't be guessed without it.
-const pathname = () => `fightdesk/${sha("fightdesk:" + process.env.SYNC_CODE).toString("hex").slice(0, 32)}.bin`;
-
-async function read() {
-  // Private blobs first; fall back to a public one if the store was created as public.
-  for (const access of ["private", "public"] as const) {
-    try {
-      const r = await get(pathname(), { access, useCache: false });
-      if (r?.stream) return await new Response(r.stream).arrayBuffer();
-    } catch { /* try the other access mode */ }
-  }
-  return null;
+async function gunzip(buf: ArrayBuffer): Promise<string> {
+  return new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
 }
 
-export async function GET(req: Request) {
-  if (!process.env.SYNC_CODE || !process.env.BLOB_READ_WRITE_TOKEN) return reply(JSON.stringify({ error: "not-configured" }), 503);
-  if (!authorised(req)) return reply(JSON.stringify({ error: "bad-code" }), 401);
-  const data = await read();
-  return data ? reply(data, 200, "application/octet-stream") : reply(JSON.stringify({ error: "empty" }), 404);
+export class SyncError extends Error {
+  kind: "unavailable" | "bad-code" | "too-large" | "network" | "storage";
+  constructor(kind: SyncError["kind"]) { super(kind); this.kind = kind; }
 }
 
-export async function PUT(req: Request) {
-  if (!process.env.SYNC_CODE || !process.env.BLOB_READ_WRITE_TOKEN) return reply(JSON.stringify({ error: "not-configured" }), 503);
-  if (!authorised(req)) return reply(JSON.stringify({ error: "bad-code" }), 401);
-  const body = await req.arrayBuffer();
-  if (!body.byteLength) return reply(JSON.stringify({ error: "empty-body" }), 400);
-  if (body.byteLength > 4_200_000) return reply(JSON.stringify({ error: "too-large" }), 413);
-  for (const access of ["private", "public"] as const) {
-    try {
-      await put(pathname(), Buffer.from(body), { access, addRandomSuffix: false, allowOverwrite: true, contentType: "application/octet-stream" });
-      return reply(JSON.stringify({ ok: true }));
-    } catch { /* try the other access mode */ }
-  }
-  return reply(JSON.stringify({ error: "storage" }), 502);
+async function call(code: string, init: RequestInit): Promise<Response> {
+  let res: Response;
+  try { res = await fetch("/api/sync", { ...init, headers: { ...(init.headers ?? {}), "x-sync-code": code }, cache: "no-store" }); }
+  catch { throw new SyncError("network"); }
+  // a static host (or `vite dev`) answers /api/* with the app's HTML or a 404
+  if (res.status === 503 || (res.status === 404 && !(res.headers.get("content-type") ?? "").includes("json")) || (res.ok && (res.headers.get("content-type") ?? "").includes("html"))) throw new SyncError("unavailable");
+  if (res.status === 401) throw new SyncError("bad-code");
+  if (res.status === 413) throw new SyncError("too-large");
+  return res;
 }
+
+/** The saved snapshot, or null when nothing has been pushed yet. */
+export async function pull(code: string): Promise<Snapshot | null> {
+  const res = await call(code, { method: "GET" });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new SyncError("storage");
+  return JSON.parse(await gunzip(await res.arrayBuffer())) as Snapshot;
+}
+
+export async function push(code: string, data: AppData): Promise<void> {
+  const body = await gz(JSON.stringify({ savedAt: data.savedAt, data } satisfies Snapshot));
+  const res = await call(code, { method: "PUT", body, headers: { "content-type": "application/octet-stream" } });
+  if (!res.ok) throw new SyncError("storage");
+}
+
+export const syncMessage = (e: unknown) => {
+  const k = e instanceof SyncError ? e.kind : "network";
+  return { unavailable: "Sync isn’t set up on this site yet.", "bad-code": "That sync code doesn’t match the one set on the server.", "too-large": "Your data is too big to sync.", network: "No connection — will retry.", storage: "Storage hiccup — will retry." }[k];
+};
