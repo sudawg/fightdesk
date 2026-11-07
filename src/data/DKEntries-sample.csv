@@ -1,0 +1,37 @@
+Entry ID,Contest Name,Contest ID,Entry Fee,F,F,F,F,F,F,,Instructions
+4997000828,UFC $5 Fight Night Special,184022311,$5,Keiichiro Nakamura (39001644),Mantas Kondratavicius (39003014),Marcos Degli (39001370),Johnny Walker (39000137),Virna Jandiroba (39000411),Priscila Cachoeira (39001233),,1. Locate the player you want to select in the list below,,,,,,,,,
+4997001096,UFC $5 Fight Night Special,184022311,$5,Waldo Cortes-Acosta (39000000),Lucas Fernando (39000822),Karine Silva (39002192),Thomas Petersen (39001918),Mitch Raposo (39001507),Davey Grant (39000685),,2. Copy the ID of your player (you can use the Name + ID column or the ID column),,,,,,,,,
+4997001439,UFC $5 Fight Night Special,184022311,$5,Keiichiro Nakamura (39001644),Austin Bashi (39002740),Lucas Fernando (39000822),Marcos Degli (39001370),Virna Jandiroba (39000411),Davey Grant (39000685),,3. Paste the ID into the roster position desired,,,,,,,,,
+4997001651,UFC $5 Fight Night Special,184022311,$5,Waldo Cortes-Acosta (39000000),Elijah Smith (39000548),Wellington Turman (39003288),Gabriel Lorenço (39002055),Jose Delano (39002603),Priscila Cachoeira (39001233),,4. You must include an ID for each player; you cannot use just the player's name,,,,,,,,,
+4997001907,UFC $5 Fight Night Special,184022311,$5,Mantas Kondratavicius (39003014),Tatiana Suarez (39000274),Jonny Parsons (39003562),Murtazali Magomedov (39002466),Johnny Walker (39000137),Billy Elekana (39000959),,5. You can create up to 500 new lineups per file,,,,,,,,,
+4997002114,UFC $20 Single Entry,184022467,$20,Waldo Cortes-Acosta (39000000),Lucas Fernando (39000822),Karine Silva (39002192),Thomas Petersen (39001918),Mitch Raposo (39001507),Davey Grant (39000685),,"6. Once you have edited and saved your lineups, upload the file",,,,,,,,,
+4997002966,UFC $3 3-Max,184022590,$3,Keiichiro Nakamura (39001644),Mantas Kondratavicius (39003014),Marcos Degli (39001370),Johnny Walker (39000137),Virna Jandiroba (39000411),Priscila Cachoeira (39001233),,,,,,,,,,,
+4997003938,UFC $3 3-Max,184022590,$3,Keiichiro Nakamura (39001644),Austin Bashi (39002740),Lucas Fernando (39000822),Marcos Degli (39001370),Virna Jandiroba (39000411),Davey Grant (39000685),,,Position,Name + ID,Name,ID,Roster Position,Salary,Game Info,TeamAbbrev,AvgPointsPerGame
+4997004065,UFC $3 3-Max,184022590,$3,Mantas Kondratavicius (39003014),Tatiana Suarez (39000274),Jonny Parsons (39003562),Murtazali Magomedov (39002466),Johnny Walker (39000137),Billy Elekana (39000959),,,F,Waldo Cortes-Acosta (39000000),Waldo Cortes-Acosta,39000000,F,9800,WAL@COR 11/07/2026 10:00PM ET,COR,97.5
+,,,,,,,,,,,,F,Elijah Smith (39000548),Elijah Smith,39000548,F,9500,GRA@SMI 11/07/2026 10:00PM ET,SMI,88.8
+,,,,,,,,,,,,F,Keiichiro Nakamura (39001644),Keiichiro Nakamura,39001644,F,9400,NAK@SCH 11/07/2026 07:00PM ET,NAK,83.4
+,,,,,,,,,,,,F,Nina Milosevic (39001096),Nina Milosevic,39001096,F,9300,MIL@CAC 11/07/2026 10:00PM ET,MIL,85.8
+,,,,,,,,,,,,F,Mantas Kondratavicius (39003014),Mantas Kondratavicius,39003014,F,9300,PET@KON 11/07/2026 07:00PM ET,KON,83.3
+,,,,,,,,,,,,F,Tatiana Suarez (39000274),Tatiana Suarez,39000274,F,9000,SUA@JAN 11/07/2026 10:00PM ET,SUA,79.7
+,,,,,,,,,,,,F,Austin Bashi (39002740),Austin Bashi,39002740,F,9000,BAS@CAL 11/07/2026 07:00PM ET,BAS,75.4
+,,,,,,,,,,,,F,Lucas Fernando (39000822),Lucas Fernando,39000822,F,8800,ELE@FER 11/07/2026 10:00PM ET,FER,73.8
+,,,,,,,,,,,,F,Marcos Degli (39001370),Marcos Degli,39001370,F,8600,DEG@RAP 11/07/2026 10:00PM ET,DEG,67.7
+,,,,,,,,,,,,F,Karine Silva (39002192),Karine Silva,39002192,F,8600,FER@SIL 11/07/2026 07:00PM ET,SIL,70.6
+,,,,,,,,,,,,F,Jonny Parsons (39003562),Jonny Parsons,39003562,F,8500,PAR@SOU 11/07/2026 07:00PM ET,PAR,66.7
+,,,,,,,,,,,,F,Wellington Turman (39003288),Wellington Turman,39003288,F,8300,KO@TUR 11/07/2026 07:00PM ET,TUR,65.1
+,,,,,,,,,,,,F,Murtazali Magomedov (39002466),Murtazali Magomedov,39002466,F,8200,DEL@MAG 11/07/2026 07:00PM ET,MAG,64.9
+,,,,,,,,,,,,F,Thomas Petersen (39001918),Thomas Petersen,39001918,F,8000,LOR@PET 11/07/2026 07:00PM ET,PET,61.9
+,,,,,,,,,,,,F,Johnny Walker (39000137),Johnny Walker,39000137,F,7800,WAL@COR 11/07/2026 10:00PM ET,WAL,60.9
+,,,,,,,,,,,,F,Seokhyeon Ko (39003425),Seokhyeon Ko,39003425,F,7800,KO@TUR 11/07/2026 07:00PM ET,KO,55.8
+,,,,,,,,,,,,F,José Souza (39003699),José Souza,39003699,F,7700,PAR@SOU 11/07/2026 07:00PM ET,SOU,55.4
+,,,,,,,,,,,,F,Virna Jandiroba (39000411),Virna Jandiroba,39000411,F,7400,SUA@JAN 11/07/2026 10:00PM ET,JAN,52.2
+,,,,,,,,,,,,F,Gabriel Lorenço (39002055),Gabriel Lorenço,39002055,F,7400,LOR@PET 11/07/2026 07:00PM ET,LOR,54.7
+,,,,,,,,,,,,F,Gabriella Fernandes (39002329),Gabriella Fernandes,39002329,F,7200,FER@SIL 11/07/2026 07:00PM ET,FER,51.7
+,,,,,,,,,,,,F,Jose Delano (39002603),Jose Delano,39002603,F,7100,DEL@MAG 11/07/2026 07:00PM ET,DEL,51.6
+,,,,,,,,,,,,F,Carlos Calderon (39002877),Carlos Calderon,39002877,F,7100,BAS@CAL 11/07/2026 07:00PM ET,CAL,50.9
+,,,,,,,,,,,,F,Ollie Schmid (39001781),Ollie Schmid,39001781,F,6800,NAK@SCH 11/07/2026 07:00PM ET,SCH,50.7
+,,,,,,,,,,,,F,Andre Petroski (39003151),Andre Petroski,39003151,F,6700,PET@KON 11/07/2026 07:00PM ET,PET,49.7
+,,,,,,,,,,,,F,Billy Elekana (39000959),Billy Elekana,39000959,F,6600,ELE@FER 11/07/2026 10:00PM ET,ELE,48.1
+,,,,,,,,,,,,F,Mitch Raposo (39001507),Mitch Raposo,39001507,F,6500,DEG@RAP 11/07/2026 10:00PM ET,RAP,49.1
+,,,,,,,,,,,,F,Davey Grant (39000685),Davey Grant,39000685,F,6300,GRA@SMI 11/07/2026 10:00PM ET,GRA,43.8
+,,,,,,,,,,,,F,Priscila Cachoeira (39001233),Priscila Cachoeira,39001233,F,6200,MIL@CAC 11/07/2026 10:00PM ET,CAC,38.2
